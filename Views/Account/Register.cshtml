@@ -1,0 +1,61 @@
+﻿@model MBGIE.Models.RegisterViewModel
+@{
+    Layout = null;
+}
+
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Haunt Signup Form Responsive, Signup form web template, Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <link href="~/Content/LoginScripts/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="~/Content/LoginScripts/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Josefin+Sans:400,600,700" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="container">
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken();
+            <h2 style="color:white">SIGN UP</h2>
+
+            @Html.ValidationSummary()
+
+            @Html.TextBoxFor(m => m.Username, new { placeholder = "Username", @class = "agileinfo" })
+            @Html.TextBoxFor(m => m.Email, new { placeholder = "Email", @class = "agileinfo" })
+            @Html.PasswordFor(m => m.Password, new { placeholder = "Password", @class = "agileinfo" })
+            @Html.PasswordFor(m => m.ConfirmPassword, new { placeholder = "Confirm Password", @class = "agileinfo" })
+            @Html.DropDownListFor(m => m.CreateUserRolesString, new SelectList(Model.CreateUsersRoles, "ZeActualRole", "RoleName"), "Join as", new { @class = "form-control" })
+          
+            @*@Html.AntiForgeryToken()*@
+            <div class="agile_par">
+                <p>By signing up I agree to <a href="#">Terms of Service</a> and <a href="#">Private Policy</a></p>
+            </div>
+            <div class="w3l_but">
+                <button type="submit" style="color:white">REGISTER</button>
+            </div>
+        }
+        <div class="wthree_down">
+            <h3>Already had an Account? please  @Html.ActionLink("Log in", "Login", "Account", null)</h3>
+
+        </div>
+
+        <div class="clear"></div>
+    </div>
+        @*<div class="footer">
+                <p>&copy; Haunt Signup Form  2018. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="blank">W3layouts</a></p>
+            </div>*@
+    
+    </body>
+</html>
